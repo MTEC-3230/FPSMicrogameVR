@@ -18,5 +18,9 @@ EditorBuildSettings:
     path: Assets/FPS/Scenes/MainScene.unity
     guid: d794a2ef8ba31d847ad3c19d03e2ddb9
   m_configObjects:
+    Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 48bab71a4d759e9478945cc5a1d1d025,
+      type: 2}
+    com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 1eebbcb34b2e1724fa1cac88b63400e6,
+      type: 2}
     com.unity.xr.openxr.settings4: {fileID: 11400000, guid: ebb885278cbeea6479645a4c958444a9,
       type: 2}
