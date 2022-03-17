@@ -20,9 +20,9 @@ namespace Unity.FPS.Gameplay
         [Tooltip("Used to flip the horizontal input axis")]
         public bool InvertXAxis = false;
 
-        GameFlowManager m_GameFlowManager;
-        PlayerCharacterController m_PlayerCharacterController;
-        bool m_FireInputWasHeld;
+        protected GameFlowManager m_GameFlowManager;
+        protected PlayerCharacterController m_PlayerCharacterController;
+        protected bool m_FireInputWasHeld;
 
         void Start()
         {
@@ -41,12 +41,12 @@ namespace Unity.FPS.Gameplay
             m_FireInputWasHeld = GetFireInputHeld();
         }
 
-        public bool CanProcessInput()
+        virtual public bool CanProcessInput()
         {
             return Cursor.lockState == CursorLockMode.Locked && !m_GameFlowManager.GameIsEnding;
         }
 
-        public Vector3 GetMoveInput()
+        virtual public Vector3 GetMoveInput()
         {
             if (CanProcessInput())
             {
@@ -62,19 +62,19 @@ namespace Unity.FPS.Gameplay
             return Vector3.zero;
         }
 
-        public float GetLookInputsHorizontal()
+        virtual public float GetLookInputsHorizontal()
         {
             return GetMouseOrStickLookAxis(GameConstants.k_MouseAxisNameHorizontal,
                 GameConstants.k_AxisNameJoystickLookHorizontal);
         }
 
-        public float GetLookInputsVertical()
+        virtual public float GetLookInputsVertical()
         {
             return GetMouseOrStickLookAxis(GameConstants.k_MouseAxisNameVertical,
                 GameConstants.k_AxisNameJoystickLookVertical);
         }
 
-        public bool GetJumpInputDown()
+        virtual public bool GetJumpInputDown()
         {
             if (CanProcessInput())
             {
@@ -84,7 +84,7 @@ namespace Unity.FPS.Gameplay
             return false;
         }
 
-        public bool GetJumpInputHeld()
+        virtual public bool GetJumpInputHeld()
         {
             if (CanProcessInput())
             {
@@ -94,17 +94,17 @@ namespace Unity.FPS.Gameplay
             return false;
         }
 
-        public bool GetFireInputDown()
+        virtual public bool GetFireInputDown()
         {
             return GetFireInputHeld() && !m_FireInputWasHeld;
         }
 
-        public bool GetFireInputReleased()
+        virtual public bool GetFireInputReleased()
         {
             return !GetFireInputHeld() && m_FireInputWasHeld;
         }
 
-        public bool GetFireInputHeld()
+        virtual public bool GetFireInputHeld()
         {
             if (CanProcessInput())
             {
@@ -122,7 +122,7 @@ namespace Unity.FPS.Gameplay
             return false;
         }
 
-        public bool GetAimInputHeld()
+        virtual public bool GetAimInputHeld()
         {
             if (CanProcessInput())
             {
@@ -136,7 +136,7 @@ namespace Unity.FPS.Gameplay
             return false;
         }
 
-        public bool GetSprintInputHeld()
+        virtual public bool GetSprintInputHeld()
         {
             if (CanProcessInput())
             {
@@ -146,7 +146,7 @@ namespace Unity.FPS.Gameplay
             return false;
         }
 
-        public bool GetCrouchInputDown()
+        virtual public bool GetCrouchInputDown()
         {
             if (CanProcessInput())
             {
@@ -156,7 +156,7 @@ namespace Unity.FPS.Gameplay
             return false;
         }
 
-        public bool GetCrouchInputReleased()
+        virtual public bool GetCrouchInputReleased()
         {
             if (CanProcessInput())
             {
@@ -166,7 +166,7 @@ namespace Unity.FPS.Gameplay
             return false;
         }
 
-        public bool GetReloadButtonDown()
+        virtual public bool GetReloadButtonDown()
         {
             if (CanProcessInput())
             {
@@ -176,7 +176,7 @@ namespace Unity.FPS.Gameplay
             return false;
         }
 
-        public int GetSwitchWeaponInput()
+        virtual public int GetSwitchWeaponInput()
         {
             if (CanProcessInput())
             {
@@ -199,7 +199,7 @@ namespace Unity.FPS.Gameplay
             return 0;
         }
 
-        public int GetSelectWeaponInput()
+        virtual public int GetSelectWeaponInput()
         {
             if (CanProcessInput())
             {
