@@ -63,6 +63,7 @@ public class PlayerInputHandlerVR : PlayerInputHandler
 
     public override bool GetFireInputDown()
     {
+        Debug.Log("GetFireInputDown");
         return GetFireInputHeld() && !m_FireInputWasHeld;
     }
 

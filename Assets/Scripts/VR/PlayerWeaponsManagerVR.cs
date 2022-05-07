@@ -56,6 +56,8 @@ public class PlayerWeaponsManagerVR : PlayerWeaponsManager
                 m_InputHandler.GetFireInputHeld(),
                 m_InputHandler.GetFireInputReleased());
 
+            if (hasFired) Debug.Log("Fired!");
+
             // Handle accumulating recoil
             if (hasFired)
             {
